@@ -1,0 +1,14 @@
+<div class="jumbotron text-left">
+	<h3>Search for your favourite TV Show</h3>
+	<form>
+		<div class="form-group">
+			<input type="text" class="form-control" ng-model="tvshow">
+		</div>
+		<div class="form-group">
+			<div>
+				<button type="button" class="btn btn-primary" ng-click="getTvShow()">Search</button>
+			</div>
+		</div>
+	</form>
+	<div tvshow-search data="fact"></div>
+</div>

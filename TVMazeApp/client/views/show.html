@@ -1,0 +1,78 @@
+<style>
+hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+div {
+    text-align: justify;
+    text-justify: inter-word;
+}
+.row:nth-child(odd) {
+  background-color: lightgrey;
+}
+.row:nth-child(even) {
+  background-color: blue;
+}
+</style>
+<div>
+    <div class="col-md-4">
+        <h2>{{show.name}}</h2>
+        <!--<div ng-if="show.genres.length" class="more-results-block">
+                <div ng-repeat="n in getNumber(show.genres) track by $index" style="float:left;">
+                    &nbsp;<b><u>{{show.genres[$index]}}</u></b>&nbsp;
+                </div>
+            </div>
+        -->
+        <div ng-if="show.genres.length">
+            <div ng-if="getGenre(show.genres)">
+                &nbsp;<b>{{genre}}</b>&nbsp;
+            </div>
+        </div>
+        <!--
+        <div ng-if="show.genres.length" class="more-results-block">
+            <div ng-repeat="genre in show.genres" style="float:left;">
+                &nbsp;<b><u>{{genre}}</u></b>&nbsp;
+            </div>
+        </div>
+        -->
+        <br/>
+        <img src='{{show.image.medium}}' style="width:320px;height:400px;">
+        <br/><br/>
+        <div ng-if="show.rating.average">
+          <h4>Average Ratings - {{show.rating.average}}/10</h4>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="row"></div>
+        <div class="row"></div>
+        <br/><br/>
+        <div><h2>Summary</h2></div>
+        <hr>
+        <font size="3"><p ng-bind-html='show.summary | trustHTML'></p></font>
+        <div><h2>Cast</h2></div>
+        <hr>
+        <div ng-repeat="character in show._embedded.cast">
+            <div class="row">
+                <div ng-show="!character.character.image && !character.person.image">
+                    <img src="../image/3.jpg" style="width:80px;height:80px;">
+                    &nbsp;&nbsp;{{character.person.name}} as {{character.character.name}}
+                </div>
+                <div ng-show="character.character.image">
+                    <img src='{{character.character.image.medium}}' style="width:80px;height:80px;">
+                    &nbsp;&nbsp;{{character.person.name}} as {{character.character.name}}
+                </div>
+                <div ng-show="character.person.image && !character.character.image">
+                    <img src='{{character.person.image.medium}}' style="width:80px;height:80px;">
+                    &nbsp;&nbsp;{{character.person.name}} as {{character.character.name}}
+                </div>
+            </div>
+            <br/>
+        </div>
+        <br/>
+    </div>
+</div>

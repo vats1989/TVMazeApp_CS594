@@ -1,0 +1,27 @@
+<div ng-if="data">
+	<br/>
+	<h3>Search Results</h3>
+	<br/>
+	<div ng-repeat="d in data">
+		<div class="row">
+			<div class="col-md-4">
+				<img src='{{d.show.image.original}}' style="width:320px;height:400px;">
+			</div>
+			<div class="col-md-7">
+			<div class="form-group">
+				<h3>{{d.show.name}}</h3>
+				<div ng-if="d.show.genres.length" class="more-results-block">
+					<div ng-repeat="genre in d.show.genres" style="float:left;">
+						&nbsp;<b><u>{{genre}}</u></b>&nbsp;
+					</div>
+					<br/>
+					<br/>
+				</div>
+				<div ng-bind-html='d.show.summary | trustHTML'></div>
+				<a href="/show/{{d.show.id}}"><button type="button" class="btn btn-primary">Details</button></a>
+			</div>
+			</div>
+		</div>
+		<br/>
+	</div>
+</div>
